@@ -12,31 +12,35 @@ namespace ClientLedger
         {
             InitializeComponent();
 
-            string localDbPath = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                "ClientLedger",
-                "data.db"
-            );
-
-            Directory.CreateDirectory(Path.GetDirectoryName(localDbPath));
-
-            DatabaseHelper.InitializeDatabase(localDbPath);
-
-            // 🔐 Add a default admin user IF it doesn't exist
-            if (!DatabaseHelper.UserExists("admin"))
-            {
-                DatabaseHelper.AddUser("admin", "admin");
-            }
-
             MainFrame.Navigate(new LoginPage());
         }
 
-        private void Dashboard_Click(object sender, RoutedEventArgs e) { }
+        public void EnableNavigation()
+        {
+            DashboardBtn.IsEnabled = true;
+            CustomersBtn.IsEnabled = true;
+            WorkEntriesBtn.IsEnabled = true;
+            SettingsBtn.IsEnabled = true;
+        }
 
-        private void Customers_Click(object sender, RoutedEventArgs e) { }
+        private void Dashboard_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new DashboardPage());
+        }
 
-        private void WorkEntries_Click(object sender, RoutedEventArgs e) { }
+        private void Customers_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new CustomersPage());
+        }
 
-        private void Settings_Click(object sender, RoutedEventArgs e) { }
+        private void WorkEntries_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new WorkEntriesPage());
+        }
+
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new SettingsPage());
+        }
     }
 }

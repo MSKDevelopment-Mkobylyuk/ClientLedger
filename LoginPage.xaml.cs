@@ -23,12 +23,18 @@ namespace ClientLedger
                 return;
             }
 
-            bool isValid = DatabaseHelper.ValidateUser(username, password);
+            bool isValid = MSKUserHelper.ValidateUser(username, password);
 
             if (isValid)
             {
                 // Clear error and navigate
                 ErrorMessage.Visibility = Visibility.Collapsed;
+
+                if (Application.Current.MainWindow is MainWindow mainWindow)
+                {
+                    mainWindow.EnableNavigation();
+                }
+
                 NavigationService?.Navigate(new DashboardPage());
             }
             else

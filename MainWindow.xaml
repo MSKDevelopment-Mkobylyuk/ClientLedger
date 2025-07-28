@@ -27,10 +27,10 @@
                        HorizontalAlignment="Left"/>
 
             <!-- Navigation Buttons -->
-            <Button Content="Dashboard" Style="{StaticResource NavButtonStyle}" Click="Dashboard_Click"/>
-            <Button Content="Customers" Style="{StaticResource NavButtonStyle}" Click="Customers_Click"/>
-            <Button Content="Work Entries" Style="{StaticResource NavButtonStyle}" Click="WorkEntries_Click"/>
-            <Button Content="Settings" Style="{StaticResource NavButtonStyle}" Click="Settings_Click"/>
+            <Button x:Name="DashboardBtn" Content="Dashboard" Style="{StaticResource NavButtonStyle}" Click="Dashboard_Click" IsEnabled="False"/>
+            <Button x:Name="CustomersBtn" Content="Customers" Style="{StaticResource NavButtonStyle}" Click="Customers_Click" IsEnabled="False"/>
+            <Button x:Name="WorkEntriesBtn" Content="Work Entries" Style="{StaticResource NavButtonStyle}" Click="WorkEntries_Click" IsEnabled="False"/>
+            <Button x:Name="SettingsBtn" Content="Settings" Style="{StaticResource NavButtonStyle}" Click="Settings_Click" IsEnabled="False"/>
         </StackPanel>
 
         <!-- Main Content Area with Rounded Corners -->

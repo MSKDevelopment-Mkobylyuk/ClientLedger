@@ -1,0 +1,90 @@
+﻿<Page x:Class="ClientLedger.WorkEntriesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="WorkEntriesPage">
+
+    <Grid Background="#F4F6F8" Margin="20">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Input Form -->
+        <Border Background="White" Padding="20" Margin="0,0,0,20" CornerRadius="12">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <!-- Inputs -->
+                    <RowDefinition Height="Auto" />
+                    <!-- Category selector -->
+                    <RowDefinition Height="Auto" />
+                    <!-- Buttons -->
+                </Grid.RowDefinitions>
+
+                <!-- Inputs Grid -->
+                <Grid Grid.Row="0" Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Customer Selector -->
+                    <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                        <TextBlock Text="Select Customer" Foreground="#666" Margin="0,0,0,5"/>
+                        <ComboBox x:Name="CustomerComboBox" Width="200"/>
+                    </StackPanel>
+
+                    <!-- Work Date -->
+                    <StackPanel Grid.Column="1" Margin="0,0,10,0">
+                        <TextBlock Text="Work Date" Foreground="#666" Margin="0,0,0,5"/>
+                        <DatePicker x:Name="WorkDatePicker" Width="150" SelectedDate="{x:Static sys:DateTime.Now}"/>
+                    </StackPanel>
+
+                    <!-- Hours Worked -->
+                    <StackPanel Grid.Column="2" Margin="0,0,10,0">
+                        <TextBlock Text="Hours Worked" Foreground="#666" Margin="0,0,0,5"/>
+                        <TextBox x:Name="HoursTextBox" Width="80"/>
+                    </StackPanel>
+
+                    <!-- Work Description -->
+                    <StackPanel Grid.Column="3">
+                        <TextBlock Text="Work Description" Foreground="#666" Margin="0,0,0,5"/>
+                        <TextBox x:Name="DescriptionTextBox" Height="40" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Category selector only visible if Retainer -->
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10" x:Name="CategoryPanel" Visibility="Collapsed">
+                    <TextBlock Text="Select Category" Foreground="#666" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="CategoryComboBox" Width="200" DisplayMemberPath="CategoryName" SelectedValuePath="Id"/>
+                </StackPanel>
+
+                <!-- Buttons -->
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button Content="Add Entry" Width="100" Background="#00D1B2" Foreground="White" Click="AddEntry_Click" Margin="0,0,10,0"/>
+                    <Button Content="Edit Entry" Width="100" Background="#2196F3" Foreground="White" Click="EditEntry_Click" Margin="0,0,10,0"/>
+                    <Button Content="Delete Entry" Width="100" Background="#F44336" Foreground="White" Click="DeleteEntry_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Entries List -->
+        <DataGrid x:Name="WorkEntriesDataGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" Background="White">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Category" Binding="{Binding CategoryName}" Width="Auto" />
+                <DataGridTextColumn Header="Date" Binding="{Binding WorkDate, StringFormat=d}" Width="*" />
+                <DataGridTextColumn Header="Hours" Binding="{Binding Hours}" Width="Auto" />
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="2*" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Page>

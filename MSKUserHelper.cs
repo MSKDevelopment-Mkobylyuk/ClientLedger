@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ClientLedger.Helpers
 {
-    public static class DatabaseHelper
+    public static class MSKUserHelper
     {
         public static string DbPath = ""; // Set from Settings later
 
