@@ -1,0 +1,49 @@
+﻿<Page x:Class="ClientLedger.DashboardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClientLedger"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DashboardPage">
+
+    <Grid Background="#F4F6F8">
+        <StackPanel Margin="20">
+            <TextBlock Text="Dashboard" FontSize="28" FontWeight="Bold" Foreground="#1E1E2F" Margin="0,0,0,20"/>
+
+            <!-- Stats cards -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,30" >
+                <Border Background="White" CornerRadius="10" Padding="20" Width="180" Margin="10" >
+                    <StackPanel>
+                        <TextBlock Text="Total Customers" FontWeight="SemiBold" Foreground="#666" />
+                        <TextBlock Text="0" FontSize="24" FontWeight="Bold" Foreground="#00D1B2" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+                <Border Background="White" CornerRadius="10" Padding="20" Width="180" Margin="10" >
+                    <StackPanel>
+                        <TextBlock Text="Total Retainers" FontWeight="SemiBold" Foreground="#666" />
+                        <TextBlock Text="$0.00" FontSize="24" FontWeight="Bold" Foreground="#00D1B2" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+                <Border Background="White" CornerRadius="10" Padding="20" Width="180" Margin="10" >
+                    <StackPanel>
+                        <TextBlock Text="Total Hours Worked" FontWeight="SemiBold" Foreground="#666" />
+                        <TextBlock Text="0" FontSize="24" FontWeight="Bold" Foreground="#00D1B2" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- Recent Activity placeholder -->
+            <TextBlock Text="Recent Activity" FontSize="18" FontWeight="SemiBold" Foreground="#1E1E2F" Margin="10,0,0,10"/>
+
+            <Border Background="White" CornerRadius="10" Padding="15" Height="200" >
+                <TextBlock Text="No recent activity yet." 
+                           Foreground="#666" 
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center" 
+                           FontStyle="Italic"/>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>
