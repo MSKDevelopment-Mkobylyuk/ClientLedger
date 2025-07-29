@@ -40,10 +40,21 @@ namespace ClientLedger
                 {
                     var categories = RetainerCategoryRepository.GetByCustomerId(c.Id);
                     c.RetainerCategories = categories ?? new List<RetainerCategory>();
+
+                    var entries = WorkEntryRepository.GetByCustomerId(c.Id);
+                    var totalUsedHours = entries.Sum(e => (decimal)e.Hours);
+                    var totalAllowed = c.TotalAllowedHours;
+
+                    c.TotalRemainingHours = Math.Max(0, totalAllowed - totalUsedHours);
                 }
                 else
                 {
                     c.RetainerCategories = new List<RetainerCategory>();
+
+                    var entries = WorkEntryRepository.GetByCustomerId(c.Id);
+                    var totalHours = entries.Sum(e => (decimal)e.Hours);
+                    var usedAmount = totalHours * c.BaseRate;
+                    c.TotalRemaining = Math.Max(0, c.MonthlyCost - usedAmount);
                 }
 
                 customers.Add(c);

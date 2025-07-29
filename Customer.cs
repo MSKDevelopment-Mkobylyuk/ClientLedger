@@ -9,8 +9,16 @@ namespace ClientLedger
         public int Id { get; set; }
         public string Name { get; set; }
         public string ContactName { get; set; }
+        public decimal WorkEntriesHours { get; set; } = 0;
+        public AgreementType AgreementType { get; set; }
+        public decimal MonthlyCost { get; set; }
+        public decimal BaseRate { get; set; }
 
-        // Total allowed max hours (for Retainer)
+        public List<RetainerCategory> RetainerCategories { get; set; } =
+            new List<RetainerCategory>();
+        public decimal? TotalRemaining { get; set; }
+        public decimal? TotalRemainingHours { get; set; }
+
         public decimal TotalAllowedHours
         {
             get
@@ -20,16 +28,6 @@ namespace ClientLedger
                 return RetainerCategories.Sum(c => c.MaxHours);
             }
         }
-
-        // Hours worked from work entries (should be set when loading)
-        public decimal WorkEntriesHours { get; set; } = 0;
-
-        public AgreementType AgreementType { get; set; }
-        public decimal MonthlyCost { get; set; }
-        public decimal BaseRate { get; set; }
-
-        public List<RetainerCategory> RetainerCategories { get; set; } =
-            new List<RetainerCategory>();
 
         public string CategorySummary
         {
@@ -73,8 +71,18 @@ namespace ClientLedger
         {
             get
             {
-                // Leaving empty for now
-                return string.Empty;
+                if (AgreementType == AgreementType.ServiceAgreement && TotalRemaining.HasValue)
+                {
+                    return TotalRemaining.Value.ToString("C");
+                }
+                else if (AgreementType == AgreementType.Retainer && TotalRemainingHours.HasValue)
+                {
+                    return $"{TotalRemainingHours.Value} hrs";
+                }
+                else
+                {
+                    return "N/A";
+                }
             }
         }
     }

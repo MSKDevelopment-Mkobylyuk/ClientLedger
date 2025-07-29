@@ -55,7 +55,7 @@ namespace ClientLedger.Data
                                 WorkDate = DateTime.Parse(reader.GetString(2)),
                                 Hours = reader.GetDouble(3),
                                 Description = reader.IsDBNull(4) ? "" : reader.GetString(4),
-                                CategoryName = reader.GetString(5),
+                                CategoryName = reader.IsDBNull(5) ? "" : reader.GetString(5),
                             }
                         );
                     }
@@ -126,7 +126,7 @@ namespace ClientLedger.Data
             {
                 conn.Open();
                 var cmd = new SQLiteCommand(
-                    "SELECT Id, CustomerId, WorkDate, Hours, Description FROM WorkEntries WHERE CustomerId = @custId",
+                    "SELECT Id, CustomerId, WorkDate, Hours, Description, CategoryName FROM WorkEntries WHERE CustomerId = @custId",
                     conn
                 );
                 cmd.Parameters.AddWithValue("@custId", customerId);
@@ -143,6 +143,7 @@ namespace ClientLedger.Data
                                 WorkDate = DateTime.Parse(reader.GetString(2)),
                                 Hours = reader.GetDouble(3),
                                 Description = reader.IsDBNull(4) ? "" : reader.GetString(4),
+                                CategoryName = reader.IsDBNull(5) ? "" : reader.GetString(5),
                             }
                         );
                     }

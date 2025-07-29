@@ -65,6 +65,9 @@ namespace ClientLedger
         {
             if (CustomerComboBox.SelectedItem is Customer selectedCustomer)
             {
+                // Load work entries for selected customer
+                LoadWorkEntries(selectedCustomer.Id);
+
                 if (selectedCustomer.AgreementType == AgreementType.Retainer)
                 {
                     CategoryPanel.Visibility = Visibility.Visible;

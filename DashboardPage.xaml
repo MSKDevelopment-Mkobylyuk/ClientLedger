@@ -9,41 +9,58 @@
       Title="DashboardPage">
 
     <Grid Background="#F4F6F8">
-        <StackPanel Margin="20">
+        <StackPanel Margin="30">
             <TextBlock Text="Dashboard" FontSize="28" FontWeight="Bold" Foreground="#1E1E2F" Margin="0,0,0,20"/>
 
-            <!-- Stats cards -->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,30" >
-                <Border Background="White" CornerRadius="10" Padding="20" Width="180" Margin="10" >
+            <UniformGrid Columns="3" Rows="2" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <!-- Total Customers -->
+                <Border Background="White" CornerRadius="10" Padding="20" Margin="10">
                     <StackPanel>
-                        <TextBlock Text="Total Customers" FontWeight="SemiBold" Foreground="#666" />
-                        <TextBlock Text="0" FontSize="24" FontWeight="Bold" Foreground="#00D1B2" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Total Customers" FontWeight="SemiBold" Foreground="#666"/>
+                        <TextBlock x:Name="TotalCustomersText" Text="0" FontSize="26" FontWeight="Bold" Foreground="#00D1B2" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Border>
-                <Border Background="White" CornerRadius="10" Padding="20" Width="180" Margin="10" >
-                    <StackPanel>
-                        <TextBlock Text="Total Retainers" FontWeight="SemiBold" Foreground="#666" />
-                        <TextBlock Text="$0.00" FontSize="24" FontWeight="Bold" Foreground="#00D1B2" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </Border>
-                <Border Background="White" CornerRadius="10" Padding="20" Width="180" Margin="10" >
-                    <StackPanel>
-                        <TextBlock Text="Total Hours Worked" FontWeight="SemiBold" Foreground="#666" />
-                        <TextBlock Text="0" FontSize="24" FontWeight="Bold" Foreground="#00D1B2" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </Border>
-            </StackPanel>
 
-            <!-- Recent Activity placeholder -->
-            <TextBlock Text="Recent Activity" FontSize="18" FontWeight="SemiBold" Foreground="#1E1E2F" Margin="10,0,0,10"/>
+                <!-- Total Service Agreements -->
+                <Border Background="White" CornerRadius="10" Padding="20" Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="Service Agreements" FontWeight="SemiBold" Foreground="#666"/>
+                        <TextBlock x:Name="TotalServiceAgreementsText" Text="0" FontSize="26" FontWeight="Bold" Foreground="#007ACC" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
 
-            <Border Background="White" CornerRadius="10" Padding="15" Height="200" >
-                <TextBlock Text="No recent activity yet." 
-                           Foreground="#666" 
-                           VerticalAlignment="Center" 
-                           HorizontalAlignment="Center" 
-                           FontStyle="Italic"/>
-            </Border>
+                <!-- Total Retainers -->
+                <Border Background="White" CornerRadius="10" Padding="20" Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="Retainers" FontWeight="SemiBold" Foreground="#666"/>
+                        <TextBlock x:Name="TotalRetainersText" Text="0" FontSize="26" FontWeight="Bold" Foreground="#FF7F50" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Total Hours Worked -->
+                <Border Background="White" CornerRadius="10" Padding="20" Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="Hours Worked" FontWeight="SemiBold" Foreground="#666"/>
+                        <TextBlock x:Name="TotalHoursWorkedText" Text="0" FontSize="26" FontWeight="Bold" Foreground="#00D1B2" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Total Work Entries -->
+                <Border Background="White" CornerRadius="10" Padding="20" Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="Work Entries" FontWeight="SemiBold" Foreground="#666"/>
+                        <TextBlock x:Name="TotalWorkEntriesText" Text="0" FontSize="26" FontWeight="Bold" Foreground="#8A2BE2" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Reserved for future stat -->
+                <Border Background="#EDEFF1" CornerRadius="10" Padding="20" Margin="10" BorderBrush="#DDD" BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock Text="(Future Metric)" FontWeight="SemiBold" Foreground="#999"/>
+                        <TextBlock Text="0" FontSize="26" FontWeight="Bold" Foreground="#BBB" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
         </StackPanel>
     </Grid>
 </Page>
